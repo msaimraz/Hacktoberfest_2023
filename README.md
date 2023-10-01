@@ -1,6 +1,6 @@
 
 
-<h1 align="center"> HactoberFest2023-For_All_Beginers </h1>
+<h1 align="center"> HactoberFest_2023-For_All </h1>
 
 ***
 
@@ -47,7 +47,7 @@ To earn your Hacktoberfest tee or tree reward, you must register and make four v
     2. Star this repo
     3. Add a file
     4. commit the code
-    5. Make pull request
+    5. Make a pull request
 ***
 <h2 align="center">
     <p>
