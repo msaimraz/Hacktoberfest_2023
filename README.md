@@ -1,6 +1,6 @@
 
 
-<h1 align="center"> HactoberFest_2023-For_All </h1>
+<h1 align="center"> HactoberFest 2023 For All </h1>
 
 ***
 
