@@ -1,0 +1,54 @@
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    public Node reverseLinkedList(Node head) {
+        Node prev = null;
+        Node current = head;
+
+        while (current != null) {
+            Node nextNode = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextNode;
+        }
+
+        return prev;  // New head of the reversed list
+    }
+
+    public void printLinkedList(Node head) {
+        Node current = head;
+
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.print("null\n");
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.head = new Node(1);
+        list.head.next = new Node(2);
+        list.head.next.next = new Node(3);
+        list.head.next.next.next = new Node(4);
+        list.head.next.next.next.next = new Node(5);
+
+        System.out.println("Original linked list:");
+        list.printLinkedList(list.head);
+
+        Node reversedHead = list.reverseLinkedList(list.head);
+
+        System.out.println("Reversed linked list:");
+        list.printLinkedList(reversedHead);
+    }
+}
