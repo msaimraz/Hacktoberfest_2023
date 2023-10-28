@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node* next;
+};
+
+struct node* reverse (struct node*);
+void display(struct node*);
+
+int main()
+{
+    char ch;
+    struct node *head = NULL,*curr = NULL,*p;
+    curr = (struct node*)malloc(sizeof(struct node));
+    
+    //Input LL
+    printf("Enter Data: ");
+    scanf("%d",&curr->data);
+    
+    head = curr;
+    
+    do
+    {
+        printf("Do you want to create a new node? Type Y for yes. ");
+        scanf(" %c",&ch);
+        
+        if(ch == 'Y' || ch == 'y')
+        {
+            p = (struct node*)malloc(sizeof(struct node));
+            printf("Enter Data: ");
+            scanf("%d",&p->data);
+            curr->next = p;
+            curr = curr->next;
+        }
+    } while(ch == 'Y' || ch == 'y');
+    
+    curr->next = NULL;
+    
+    printf("\nLinked List : \n");
+    display(head);
+    
+    //Reverse LL
+    head = reverse(head);
+    
+    printf("\n\nReverse of Linked List : \n");
+    display(head);
+    
+    
+    return 0;
+    
+}
+
+struct node* reverse(struct node *head)
+{
+    struct node *Temp1 = NULL;
+    struct node *Temp2 = NULL;
+    
+    while(head != NULL)
+    {
+        Temp2 = head->next;
+        head->next = Temp1;
+        Temp1 = head;
+        head = Temp2;
+    }
+    head = Temp1;
+    return head;
+}
+
+void display(struct node *curr)
+{
+    while (curr != NULL)
+    {
+        printf("%d\t",curr->data);
+        curr = curr->next;
+    }
+}
