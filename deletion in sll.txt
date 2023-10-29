@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Node {
+    int val;
+    struct Node *next;
+};
+
+void deleteNode(struct Node *node) {
+    if (node == NULL || node->next == NULL) {
+        return;
+    } else {
+        struct Node *temp = node->next;
+        temp=node->next;
+        node->next = temp->next;
+        free(temp);
+    }
+}
+
+int main() {
+    int valueToDelete;
+    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+    head->val = 12;
+    struct Node *node1 = (struct Node *)malloc(sizeof(struct Node));
+    node1->val = 23;
+    head->next = node1;
+    struct Node *node2 = (struct Node *)malloc(sizeof(struct Node));
+    node2->val = 11;
+    node1->next = node2;
+    struct Node *node3 = (struct Node *)malloc(sizeof(struct Node));
+    node3->val = 5;
+    node2->next = node3;
+
+    printf("\nOriginal linked list:");
+    struct Node *curr = head;
+    while (curr != NULL) {
+        printf("%d->", curr->val);
+        curr = curr->next;
+    }
+    printf("\n");
+
+    printf("\nEnter the value to be deleted:");
+    scanf("%d", &valueToDelete);
+
+    curr = head;
+    struct Node *nodeToDelete = NULL;
+    while (curr != NULL) {
+        if (curr->next != NULL && curr->next->val == valueToDelete) {
+            nodeToDelete = curr;
+            break;
+        }
+        curr = curr->next;
+    }
+
+    if (nodeToDelete == NULL) {
+        printf("\nNo node with this value found in the list");
+    } else {
+        deleteNode(nodeToDelete);
+        printf("\nNode with value %d has been deleted successfully", valueToDelete);
+    }
+
+    /* Display the new linked list */
+    curr = head;
+    printf("\nUpdated linked list:");
+    while (curr != NULL) {
+        printf("%d->", curr->val);
+        curr = curr->next;
+    }
+return 0;
+   
+}
+
